@@ -1,13 +1,15 @@
-jQuery(function($) {
-  require([
-    'js/collections/statusCollection',
-    'js/views/statusView'],
-  function (StatusCollection, StatusView) {
+define([
+  'collections/statusCollection',
+  'views/statusView'
+], function (StatusCollection, StatusView) {
 
+  jQuery(function($) {
     var statusView = new StatusView({
       el: $('#status-container'),
       collection: new StatusCollection()
     });
+
   });
 
 });
+
