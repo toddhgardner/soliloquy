@@ -28,13 +28,17 @@ $api->get('/status/', function () {
 
 $api->post('/status/', function () {
     global $status, $file;
-    array_push($status, $_POST);
+
+    $rawJSONString = file_get_contents('php://input');
+    $item = json_decode($rawJSONString);
+
+    array_push($status, $item);
 
     $file_handle = fopen($file, 'w');
     fwrite($file_handle, serialize($status));
     fclose($file_handle);
 
-    echo json_encode($_POST);
+    echo json_encode($item);
 });
 
 $api->run();
