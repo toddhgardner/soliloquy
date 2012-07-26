@@ -1,3 +1,8 @@
-window.models.StatusModel = Backbone.Model.extend({
+define(function() {
+
+	var StatusModel = Backbone.Model.extend({
+	});
+
+	return StatusModel;
 
 });

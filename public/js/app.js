@@ -1,6 +1,13 @@
 jQuery(function($) {
-  var statusView = new window.views.StatusView({
-    el: $('#status-container'),
-    collection: new window.collections.StatusCollection()
+  require([
+    'js/collections/statusCollection',
+    'js/views/statusView'],
+  function (StatusCollection, StatusView) {
+
+    var statusView = new StatusView({
+      el: $('#status-container'),
+      collection: new StatusCollection()
+    });
   });
+
 });

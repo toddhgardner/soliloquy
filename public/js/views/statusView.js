@@ -1,26 +1,31 @@
-window.views.StatusView = Backbone.View.extend({
+define(function() {
 
-	events: { 'submit': 'onStatusSubmit' },
+	var StatusView = Backbone.View.extend({
 
-	initialize: function () {
-		this.collection.on('add', this.writeStatus, this);
- 		this.collection.on('reset', this.writeAllStatus, this);
- 		this.collection.fetch();
-	},
+		events: { 'submit': 'onStatusSubmit' },
 
-	onStatusSubmit: function (e) {
-		e.preventDefault();
-		this.collection.create({ text: this.$('textarea').val() });
-		return false;
-	},
+		initialize: function () {
+			this.collection.on('add', this.writeStatus, this);
+	 		this.collection.on('reset', this.writeAllStatus, this);
+	 		this.collection.fetch();
+		},
 
-	writeStatus: function (model) {
-  		this.$('textarea').val('');
-  		this.$('#statuses').append('<li class="status">' + model.get('text') + '</li>');
-	},
+		onStatusSubmit: function (e) {
+			e.preventDefault();
+			this.collection.create({ text: this.$('textarea').val() });
+			return false;
+		},
 
-	writeAllStatus: function (collection) {
-		collection.each(this.writeStatus, this);
-	}
+		writeStatus: function (model) {
+	  		this.$('textarea').val('');
+	  		this.$('#statuses').append('<li class="status">' + model.get('text') + '</li>');
+		},
 
+		writeAllStatus: function (collection) {
+			collection.each(this.writeStatus, this);
+		}
+
+	});
+
+	return StatusView;
 });
