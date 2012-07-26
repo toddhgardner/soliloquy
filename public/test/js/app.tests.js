@@ -1,35 +1,36 @@
 
-test( "window.onStatusSubmit() sends textarea data to server and renders result", function() {
+test( "window.onStatusSubmit() creates status model in collection", function() {
   
 	// Arrange
-	var server = sinon.fakeServer.create();
-	server.respondWith("POST", "/soliloquy/api/status/",
-		[200, { "Content-Type": "application/json" },
-		'{ "text": "Hey there" }']);
+	window.statusCollection = {
+		create: sinon.spy()
+	};
 
 	// Act
-	window.onStatusSubmit();
-	server.respond();
+	var result = window.onStatusSubmit();
 
 	// Assert
-	strictEqual($('textarea').val(), '', 'text area was cleared');
-	strictEqual($('#statuses li').html(), 'Hey there', 'status was added to dom');
-
+	ok(!result, 'returned false');
+	ok(window.statusCollection.create.calledOnce, 'create was called');
 });
 
-test( "window.getStatus() gets status from server and renders in list", function() {
+
+window.writeStatus = function (model) {
+  $('textarea').val('');
+  $('#statuses').append('<li class="status">' + model.get('text') + '</li>');
+};
+
+test( "window.writeStatus() writes text to dom", function() {
   
 	// Arrange
-	var server = sinon.fakeServer.create();
-	server.respondWith("GET", "/soliloquy/api/status/",
-		[200, { "Content-Type": "application/json" },
-		'[{ "text": "Hi" }, { "text": "You" }, { "text": "Guys" }]']);
+	var fakeModel = {
+		get: sinon.spy()
+	};
 
 	// Act
-	window.getStatus();
-	server.respond();
+	window.writeStatus(fakeModel);
 
 	// Assert
-	strictEqual($('#statuses li').length, 3, 'statuses were added to dom');
+	strictEqual($('#statuses li').length, 1, 'statuses were written to dom');
 
 });
