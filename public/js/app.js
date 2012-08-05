@@ -1,22 +1,27 @@
-window.statusCollection = new window.collections.StatusCollection();
-
-window.onStatusSubmit = function() {
-  window.statusCollection.create({ text: $(this).find('textarea').val() });
+window.onStatusSubmit = function(collection) {
+  collection.create({ text: $(this).find('textarea').val() });
   return false;
 };
 
-window.writeAllStatus = function (collection) {
-  collection.each(window.writeStatus);
+window.renderStatuses = function (collection) {
+  collection.each(window.renderStatus);
 };
 
-window.writeStatus = function (model) {
+window.renderStatus = function (model) {
   $('textarea').val('');
   $('#statuses').append('<li class="status">' + model.get('text') + '</li>');
 };
 
 jQuery(function($) {
-  $('form').on('submit', window.onStatusSubmit);
-  window.statusCollection.on('add', window.writeStatus);
-  window.statusCollection.on('reset', window.writeAllStatus);
-  window.statusCollection.fetch();
+  var statusCollection = new window.collections.StatusCollection();
+
+  $('form').on('submit', function (evt) {
+    evt.preventDefault();
+    window.onStatusSubmit.call(this, statusCollection);
+  });
+
+  statusCollection.on('reset', window.renderStatuses);
+  statusCollection.on('add', window.renderStatus);
+  
+  statusCollection.fetch();
 });
