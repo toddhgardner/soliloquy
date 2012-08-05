@@ -1,0 +1,2 @@
+window.models = {};
+window.collections = {};
