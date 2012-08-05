@@ -1,4 +1,4 @@
 window.collections.StatusCollection = Backbone.Collection.extend({
-	url: '/soliliquy/api/status/',
+	url: '/soliloquy/api/status/',
 	model: window.models.StatusModel
 });
