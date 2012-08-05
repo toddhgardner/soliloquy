@@ -1,39 +1,40 @@
 
-test( "window.onStatusSubmit() creates status model in collection", function() {
-  
+test("window.onStatusSubmit() creates status model in collection", function() {
 	// Arrange
-	window.statusCollection = {
+	var expectedStatus = "Some Value";
+
+	var $dom = $('#qunit-fixture');
+	$dom.append('<textarea>'+expectedStatus+'</textarea>');
+
+	var fakeCollection = {
 		create: sinon.spy()
 	};
 
 	// Act
-	var result = window.onStatusSubmit();
+	window.onStatusSubmit.call($dom, fakeCollection);
+	var result = fakeCollection.create.firstCall.args[0];
 
 	// Assert
-	ok(!result, 'returned false');
-	ok(window.statusCollection.create.calledOnce, 'create was called');
+	strictEqual(result.text, expectedStatus, 'status was added to collection');
 });
 
-
-window.writeStatus = function (model) {
-  $('textarea').val('');
-  $('#statuses').append('<li class="status">' + model.get('text') + '</li>');
-};
-
-test( "window.writeStatus() writes text to dom", function() {
-  
+test("window.renderStatus() writes text to dom", function() {
 	// Arrange
-	var fakeModel = {
-		get: sinon.spy()
-	};
+	var expectedStatus = "Some Value";
 
 	var $dom = $('#qunit-fixture');
+	$dom.append('<textarea>'+expectedStatus+'</textarea>');
 	$dom.append('<ul id="statuses">');
 
+	var fakeModel = {
+		get: sinon.stub().returns(expectedStatus)
+	};
+
 	// Act
-	window.writeStatus(fakeModel);
+	window.renderStatus(fakeModel);
 
 	// Assert
-	strictEqual($('#statuses li').length, 1, 'statuses were written to dom');
-
+	strictEqual($dom.find('textarea').val(), '', 'text area was cleared');
+	strictEqual($dom.find('#statuses li').length, 1, 'statuses were written to dom');
+	strictEqual($dom.find('#statuses li').first().html(), expectedStatus, 'statuses were written to dom');
 });
