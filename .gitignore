@@ -1,4 +1,9 @@
+# project data
 status.txt
+
+# sublimetext files
+*.sublime-project
+*.sublime-workspace
 
 #################
 ## Eclipse
