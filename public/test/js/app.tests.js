@@ -1,41 +1,39 @@
 
-test("window.onStatusSubmit() sends textarea data to server and renders result", function() {
+test( "window.onStatusSubmit() creates status model in collection", function() {
+  
 	// Arrange
-	var expectedStatus = "Some Value";
-
-	var server = sinon.fakeServer.create();
-	server.respondWith("POST", "/soliloquy/api/status/",
-		[200, { "Content-Type": "application/json" },
-		'{ "text": "'+expectedStatus+'" }']);
-
-	var $dom = $('#qunit-fixture');
-	$dom.append('<textarea>'+expectedStatus+'</textarea>');
-	$dom.append('<ul id="statuses">');
+	window.statusCollection = {
+		create: sinon.spy()
+	};
 
 	// Act
-	window.onStatusSubmit.call($dom);
-	server.respond();
+	var result = window.onStatusSubmit();
 
 	// Assert
-	strictEqual($dom.find('textarea').val(), '', 'text area was cleared');
-	strictEqual($dom.find('#statuses li').length, 1, 'one status was added');
-	strictEqual($dom.find('#statuses li').first().html(), expectedStatus, 'status was added to dom');
+	ok(!result, 'returned false');
+	ok(window.statusCollection.create.calledOnce, 'create was called');
 });
 
-test( "window.getStatus() gets status from server and renders in list", function() {
+
+window.writeStatus = function (model) {
+  $('textarea').val('');
+  $('#statuses').append('<li class="status">' + model.get('text') + '</li>');
+};
+
+test( "window.writeStatus() writes text to dom", function() {
+  
 	// Arrange
-	var server = sinon.fakeServer.create();
-	server.respondWith("GET", "/soliloquy/api/status/",
-		[200, { "Content-Type": "application/json" },
-		'[{ "text": "Hi" }, { "text": "You" }, { "text": "Guys" }]']);
+	var fakeModel = {
+		get: sinon.spy()
+	};
 
 	var $dom = $('#qunit-fixture');
 	$dom.append('<ul id="statuses">');
 
 	// Act
-	window.getStatus();
-	server.respond();
+	window.writeStatus(fakeModel);
 
 	// Assert
-	strictEqual($dom.find('#statuses li').length, 3, 'statuses were added to dom');
+	strictEqual($('#statuses li').length, 1, 'statuses were written to dom');
+
 });
