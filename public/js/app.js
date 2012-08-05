@@ -11,7 +11,7 @@ window.onStatusSubmit = function() {
     }
   });
   return false;
-});
+};
 
 window.getStatus = function () {
   $.ajax({
