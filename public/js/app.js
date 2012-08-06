@@ -1,6 +1,13 @@
-jQuery(function($) {
-  var statusView = new window.views.StatusView({
-    el: $('.container'),
-    collection: new window.collections.StatusCollection()
+define([
+  'collections/statusCollection',
+  'views/statusView'
+],function (StatusCollection, StatusView) {
+
+  jQuery(function($) {
+    var statusView = new StatusView({
+      el: $('.container'),
+      collection: new StatusCollection()
+    });
   });
+
 });
