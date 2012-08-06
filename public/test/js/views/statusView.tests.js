@@ -1,15 +1,19 @@
 
 sinon.stub(window.views.StatusView.prototype, 'initialize');
 
-test( "view.onStatusSubmit() creates status model in collection", function() {
-  
+test("view.onStatusSubmit() creates status model in collection", function() {
 	// Arrange
+	var expectedStatus = "Some Value";
+
+	var $fakeDom = $('#qunit-fixture');
+	$fakeDom.append('<textarea>'+expectedStatus+'</textarea>');
+
 	var fakeCollection = {
 		create: sinon.spy()
 	};
 
 	var view = new window.views.StatusView({
-		el: $('#qunit-fixture'),
+		el: $fakeDom,
 		collection: fakeCollection
 	});
 
@@ -18,29 +22,31 @@ test( "view.onStatusSubmit() creates status model in collection", function() {
 	};
 
 	// Act
-	var result = view.onStatusSubmit(fakeEvent);
+	view.onStatusSubmit(fakeEvent);
+	var result = fakeCollection.create.firstCall.args[0];
 
 	// Assert
-	ok(!result, 'returned false');
-	ok(fakeCollection.create.calledOnce, 'create was called');
+	strictEqual(result.text, expectedStatus, 'status was created in collection');
 });
 
-test( "view.writeStatus() writes text to dom", function() {
-  
+test("view.renderStatus() writes text to dom", function() {
 	// Arrange
+	var expectedStatus = "Some Value";
+
+	var $fakeDom = $('#qunit-fixture');
+	$fakeDom.append('<ul id="statuses">');
+
 	var fakeModel = {
-		get: sinon.spy()
+		get: sinon.stub().returns(expectedStatus)
 	};
 
 	var view = new window.views.StatusView({
-		el: $('#qunit-fixture')
+		el: $fakeDom
 	});
 
-
 	// Act
-	view.writeStatus(fakeModel);
+	view.renderStatus(fakeModel);
 
 	// Assert
-	strictEqual($('#statuses li').length, 1, 'statuses were written to dom');
-
+	strictEqual($fakeDom.find('#statuses li').first().html(), expectedStatus, 'statuses were written to dom');
 });

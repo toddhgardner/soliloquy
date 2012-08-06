@@ -13,11 +13,11 @@ window.views.StatusView = Backbone.View.extend({
 	onStatusSubmit: function (e) {
 		e.preventDefault();
 		this.collection.create({ text: this.$('textarea').val() });
+		this.$('textarea').val('');
 		return false;
 	},
 
 	renderStatus: function (model) {
-		this.$('textarea').val('');
 		this.$('#statuses').append('<li class="status">' + model.get('text') + '</li>');
 	},
 
