@@ -1,52 +1,54 @@
+define(['../../../js/views/statusView'], function(StatusView) {
 
-sinon.stub(window.views.StatusView.prototype, 'initialize');
+	sinon.stub(StatusView.prototype, 'initialize');
 
-test("view.onStatusSubmit() creates status model in collection", function() {
-	// Arrange
-	var expectedStatus = "Some Value";
+	test("view.onStatusSubmit() creates status model in collection", function() {
+		// Arrange
+		var expectedStatus = "Some Value";
 
-	var $fakeDom = $('#qunit-fixture');
-	$fakeDom.append('<textarea>'+expectedStatus+'</textarea>');
+		var $fakeDom = $('#qunit-fixture');
+		$fakeDom.append('<textarea>'+expectedStatus+'</textarea>');
 
-	var fakeCollection = {
-		create: sinon.spy()
-	};
+		var fakeCollection = {
+			create: sinon.spy()
+		};
 
-	var view = new window.views.StatusView({
-		el: $fakeDom,
-		collection: fakeCollection
+		var view = new StatusView({
+			el: $fakeDom,
+			collection: fakeCollection
+		});
+
+		var fakeEvent = {
+			preventDefault: sinon.spy()
+		};
+
+		// Act
+		view.onStatusSubmit(fakeEvent);
+		var result = fakeCollection.create.firstCall.args[0];
+
+		// Assert
+		strictEqual(result.text, expectedStatus, 'status was created in collection');
 	});
 
-	var fakeEvent = {
-		preventDefault: sinon.spy()
-	};
+	test("view.renderStatus() writes text to dom", function() {
+		// Arrange
+		var expectedStatus = "Some Value";
 
-	// Act
-	view.onStatusSubmit(fakeEvent);
-	var result = fakeCollection.create.firstCall.args[0];
+		var $fakeDom = $('#qunit-fixture');
+		$fakeDom.append('<ul id="statuses">');
 
-	// Assert
-	strictEqual(result.text, expectedStatus, 'status was created in collection');
-});
+		var fakeModel = {
+			get: sinon.stub().returns(expectedStatus)
+		};
 
-test("view.renderStatus() writes text to dom", function() {
-	// Arrange
-	var expectedStatus = "Some Value";
+		var view = new StatusView({
+			el: $fakeDom
+		});
 
-	var $fakeDom = $('#qunit-fixture');
-	$fakeDom.append('<ul id="statuses">');
+		// Act
+		view.renderStatus(fakeModel);
 
-	var fakeModel = {
-		get: sinon.stub().returns(expectedStatus)
-	};
-
-	var view = new window.views.StatusView({
-		el: $fakeDom
+		// Assert
+		strictEqual($fakeDom.find('#statuses li').first().html(), expectedStatus, 'statuses were written to dom');
 	});
-
-	// Act
-	view.renderStatus(fakeModel);
-
-	// Assert
-	strictEqual($fakeDom.find('#statuses li').first().html(), expectedStatus, 'statuses were written to dom');
 });
