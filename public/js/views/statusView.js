@@ -1,11 +1,13 @@
 window.views.StatusView = Backbone.View.extend({
 
-	events: { 'submit': 'onStatusSubmit' },
+	events: {
+		'submit': 'onStatusSubmit'
+	},
 
 	initialize: function () {
-		this.collection.on('add', this.writeStatus, this);
- 		this.collection.on('reset', this.writeAllStatus, this);
- 		this.collection.fetch();
+		this.collection.on('add', this.renderStatus, this);
+		this.collection.on('reset', this.renderStatuses, this);
+		this.collection.fetch();
 	},
 
 	onStatusSubmit: function (e) {
@@ -14,13 +16,13 @@ window.views.StatusView = Backbone.View.extend({
 		return false;
 	},
 
-	writeStatus: function (model) {
-  		this.$('textarea').val('');
-  		this.$('#statuses').append('<li class="status">' + model.get('text') + '</li>');
+	renderStatus: function (model) {
+		this.$('textarea').val('');
+		this.$('#statuses').append('<li class="status">' + model.get('text') + '</li>');
 	},
 
-	writeAllStatus: function (collection) {
-		collection.each(this.writeStatus, this);
+	renderStatuses: function (collection) {
+		collection.each(this.renderStatus, this);
 	}
 
 });
