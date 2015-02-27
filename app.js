@@ -1,17 +1,29 @@
 
 var express = require("express");
+var bodyParser = require("body-parser");
+var Datastore = require('nedb');
 
 var app = express();
 var port = process.env.PORT || 3000;
 
+var jsonParser = bodyParser.json();
+
+var db = {};
+db.status = new Datastore({ filename: 'db/status.db', autoload: true });
+
+
 app.get("/api/status", function (req, res, next) {
-  res.json([]);
-  next();
+  db.status.find({}, function (err, status) {
+    res.json(status);
+    next();
+  });
 });
 
-app.post("/api/status", function (req, res, next) {
-  res.json([]);
-  next();
+app.post("/api/status", jsonParser, function (req, res, next) {
+  db.status.insert(req.body, function (err, status) {
+    res.json(status);
+    next();
+  });
 });
 
 app.use(express.static(__dirname + "/public"));

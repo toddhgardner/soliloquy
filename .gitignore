@@ -1,4 +1,5 @@
 
 node_modules
+db/*.db
 *.sublime-project
 *.sublime-workspace
