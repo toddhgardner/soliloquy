@@ -1,6 +1,6 @@
 define(['models/statusModel'], function(StatusModel) {
 	var StatusCollection = Backbone.Collection.extend({
-		url: '/soliloquy/api/status/',
+		url: '/api/status/',
 		model: StatusModel
 	});
 	return StatusCollection;
