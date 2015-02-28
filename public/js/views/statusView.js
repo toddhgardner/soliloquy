@@ -4,6 +4,8 @@ define(function() {
 
 		events: { 'submit': 'onStatusSubmit' },
 
+		template: _.template($("#status-template").text()),
+
 		initialize: function () {
 			this.collection.on('add', this.writeStatus, this);
 	 		this.collection.on('reset', this.writeAllStatus, this);
@@ -18,7 +20,9 @@ define(function() {
 
 		writeStatus: function (model) {
 	  		this.$('textarea').val('');
-	  		this.$('#statuses').append('<li class="status">' + model.get('text') + '</li>');
+	  		var m = model.toJSON();
+	  		m.timestamp = m.timestamp ? moment(m.timstamp).fromNow() : null;
+	  		this.$('#statuses').append(this.template(m));
 		},
 
 		writeAllStatus: function (collection) {

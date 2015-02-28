@@ -20,8 +20,12 @@ app.get("/api/status", function (req, res, next) {
 });
 
 app.post("/api/status", jsonParser, function (req, res, next) {
-  db.status.insert(req.body, function (err, status) {
-    res.json(status);
+  var status = {
+    text: (req.body || {}).text,
+    timestamp: new Date().toISOString()
+  };
+  db.status.insert(status, function (err, saved) {
+    res.json(saved);
     next();
   });
 });

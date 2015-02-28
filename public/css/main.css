@@ -1,0 +1,13 @@
+
+.text-lg {
+  font-size: 1.2em;
+}
+
+.text-sm {
+  font-size: 0.8em;
+}
+
+.status-meta {
+  margin-top: 10px;
+  color: #333;
+}

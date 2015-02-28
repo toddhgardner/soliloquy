@@ -5,7 +5,9 @@
   <title>Soliloquy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
   <script src="js/lib/jquery.js"></script>
+  <script src="js/lib/moment.js"></script>
   <script src="js/lib/underscore.js"></script>
   <script src="js/lib/backbone.js"></script>
   <script src="js/lib/require.js" data-main="js/app.js"></script>
@@ -26,5 +28,14 @@
   </form>
   <ul id="statuses"></ul>
 </div>
+<script type="text/template" id="status-template">
+  <li class="status">
+    <div class="text-lg"><strong><%= text %></strong></div>
+    <div class="status-meta clearfix text-sm">
+      <div class="pull-left">You</div>
+      <div class="pull-right"><%= timestamp %></div>
+    </div>
+  </li>
+</script>
 </body>
 </html>
