@@ -12,6 +12,22 @@ var db = {};
 db.status = new Datastore({ filename: 'db/status.db', autoload: true });
 
 
+app.get("/api/status/reset", function (req, res, next) {
+  var data = [];
+  for (var i = 0; i < 100; i++) {
+    data.push({
+      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc in risus lacinia nunc facilisis dignissim. Suspendisse pharetra tempus dolor eu fringilla. Suspendisse tincidunt rhoncus turpis non cursus. Proin mi purus, maximus aliquet dictum at, ullamcorper at augue. Proin molestie augue id eros ultricies malesuada. Curabitur elit sem, scelerisque id porta.",
+      timestamp: new Date().toISOString()
+    });
+  }
+  db.status.remove({}, {multi:true}, function () {
+    db.status.insert(data, function (err, saved) {
+      res.json({});
+      next();
+    });
+  });
+});
+
 app.get("/api/status", function (req, res, next) {
   db.status.find({}, function (err, status) {
     res.json(status);
@@ -28,6 +44,13 @@ app.post("/api/status", jsonParser, function (req, res, next) {
     res.json(saved);
     next();
   });
+});
+
+app.get("/api/ad/inline", function (req, res, next) {
+  res.json({
+    text: "hey an ad"
+  });
+  next();
 });
 
 app.use(express.static(__dirname + "/public"));

@@ -10,7 +10,11 @@
   <script src="js/lib/moment.js"></script>
   <script src="js/lib/underscore.js"></script>
   <script src="js/lib/backbone.js"></script>
-  <script src="js/lib/require.js" data-main="js/app.js"></script>
+  <script src="js/models/statusModel.js"></script>
+  <script src="js/models/adModel.js"></script>
+  <script src="js/collections/statusCollection.js"></script>
+  <script src="js/views/statusView.js"></script>
+  <script src="js/app.js"></script>
 </head>
 <body>
 <div class="navbar navbar-fixed-top">
@@ -30,7 +34,10 @@
 </div>
 <script type="text/template" id="status-template">
   <li class="status">
-    <div class="text-lg"><strong><%= text %></strong></div>
+    <div class="status-main">
+      <img src="/img/Hello.jpg" alt="Todd" />
+      <div class="status-text text-lg"><%= text %></div>
+    </div>
     <div class="status-meta clearfix text-sm">
       <div class="pull-left">You</div>
       <div class="pull-right"><%= timestamp %></div>

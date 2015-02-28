@@ -1,15 +1,10 @@
-define([
-  'collections/statusCollection',
-  'views/statusView'
-], function (StatusCollection, StatusView) {
+var soliloquy = window.soliloquy || {};
 
-  jQuery(function($) {
-    var statusView = new StatusView({
-      el: $('#status-container'),
-      collection: new StatusCollection()
-    });
+jQuery(function($) {
 
+  var statusView = new soliloquy.StatusView({
+    el: $('#status-container'),
+    collection: new soliloquy.StatusCollection()
   });
 
 });
-

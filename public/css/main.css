@@ -7,7 +7,21 @@
   font-size: 0.8em;
 }
 
+.status-main {
+
+}
+
+.status-main img {
+  float: left;
+  max-width: 50px;
+}
+
+.status-main .status-text {
+  margin-left: 60px;
+}
+
 .status-meta {
   margin-top: 10px;
+  margin-left: 60px;
   color: #333;
 }
