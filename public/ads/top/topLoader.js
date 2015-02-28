@@ -1,6 +1,6 @@
 jQuery(function ($) {
 
-  var x = $('body').prepend("<div id='TOP_AD_CONTAINER' style='overflow-x:hidden'></div>");
+  $('body').prepend("<div id='TOP_AD_CONTAINER' style='overflow-x:hidden'></div>");
   var container = $("#TOP_AD_CONTAINER");
   $.ajax({
     method: "GET",

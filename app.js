@@ -16,6 +16,7 @@ app.get("/api/status/reset", function (req, res, next) {
   var data = [];
   for (var i = 0; i < 100; i++) {
     data.push({
+      img: "/img/Hello.jpg",
       text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc in risus lacinia nunc facilisis dignissim. Suspendisse pharetra tempus dolor eu fringilla. Suspendisse tincidunt rhoncus turpis non cursus. Proin mi purus, maximus aliquet dictum at, ullamcorper at augue. Proin molestie augue id eros ultricies malesuada. Curabitur elit sem, scelerisque id porta.",
       timestamp: new Date().toISOString()
     });
@@ -29,8 +30,8 @@ app.get("/api/status/reset", function (req, res, next) {
 });
 
 app.get("/api/status", function (req, res, next) {
-  db.status.find({}, function (err, status) {
-    res.json(status);
+  db.status.find({}).sort({ timestamp: 1 }).exec(function (err, docs) {
+    res.json(docs);
     next();
   });
 });

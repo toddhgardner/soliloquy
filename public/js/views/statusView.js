@@ -10,23 +10,19 @@ soliloquy.StatusView = Backbone.View.extend({
 		this.adModel.on('change', this.interleaveAds, this);
 
 		this.collection.on('add', this.writeStatus, this);
- 		this.collection.on('reset', this.writeAllStatus, this);
- 		this.collection.fetch({ reset: true })
- 			.then(function () {
- 				this.adModel.fetch();
- 			}.bind(this));
+ 		this.collection.fetch();
 	},
 
 	onStatusSubmit: function (e) {
 		e.preventDefault();
-		this.collection.create({ text: this.$('textarea').val() });
+		this.collection.create({ text: this.$('textarea').val() }, {wait:true});
+		this.$('textarea').val('');
 		return false;
 	},
 
 	writeStatus: function (model) {
-		this.$('textarea').val('');
 		var m = this.formatStatus(model);
-		this.$('#statuses').append(this.template(m));
+		this.$('#statuses').prepend(this.template(m));
 	},
 
 	writeAllStatus: function (collection) {
@@ -50,7 +46,7 @@ soliloquy.StatusView = Backbone.View.extend({
 
 	formatStatus: function(status) {
 		var m = status.toJSON();
-  	m.timestamp = m.timestamp ? moment(m.timstamp).fromNow() : null;
+  	m.timestamp = moment(m.timestamp).fromNow();
   	return m;
 	}
 
