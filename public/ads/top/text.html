@@ -1,0 +1,26 @@
+<style>
+
+.top-ad-wrap {
+  position: relative;
+  top: -200px;
+  height: 0;
+  text-align: center;
+  overflow: hidden;
+  width:1200px;
+  transition-property: top, height;
+  transition-duration: 0s, 2s;
+  transition-delay: 2s, 0s;
+}
+
+.top-ad-wrap.reveal {
+  top: 0px;
+  height: 200px;
+  transition-property: top, height;
+  transition-duration: 0s, 2s;
+  transition-delay: 0s, 0s;
+}
+
+</style>
+<div class="top-ad-wrap">
+  <img src="http://placekitten.com/g/1200/200" />
+</div>
