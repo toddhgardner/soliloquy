@@ -14,6 +14,7 @@
     },
 
     render: function () {
+      console.info("rendering profile");
       this.$el.html(this.template(this.model.toJSON()));
       return this;
     }

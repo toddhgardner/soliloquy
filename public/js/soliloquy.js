@@ -3,6 +3,8 @@
 
   jQuery(function($) {
 
+    console.info("Soliloquy initializing...");
+
     var soliloquy = window.soliloquy = window.soliloquy || {};
     var profile = new soliloquy.ProfileModel();
     var statements = new soliloquy.StatementCollection();

@@ -25,7 +25,8 @@
 	  	return formatted;
 		},
 
-		onDelete: function (e) {
+		onDelete: function () {
+			console.info("deleting statement " + this.model.id);
 			this.model.destroy();
 			this.remove();
 		}
@@ -44,6 +45,7 @@
 		},
 
 		render: function () {
+			console.info("rendering statement list with " + this.collection.length + " entries");
 			this.$statementList.html("");
 			this.collection.each(this.renderStatement, this);
 			return this;

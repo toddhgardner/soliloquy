@@ -84,9 +84,12 @@
 
     // Custom Globals
     "globals"       : {        // additional predefined global variables
+        "_"         : true,
+        "$"         : true,
         "Backbone"  : true,
         "jQuery"    : true,
         "module"    : true,
+        "moment"    : true,
         "process"   : true,
         "require"   : true
     }
