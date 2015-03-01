@@ -2,10 +2,11 @@
   "use strict";
 
   var soliloquy = window.soliloquy = window.soliloquy || {};
-  soliloquy.AdModel = Backbone.Model.extend({
+  soliloquy.ProfileModel = Backbone.Model.extend({
 
     idAttribute: "_id",
-    url: "/api/ad/inline"
+
+    url: "/api/profile"
 
   });
 

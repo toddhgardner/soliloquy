@@ -4,6 +4,12 @@ body {
   overflow-x: hidden;
 }
 
+header {
+  height: 80px;
+  background-color: #ccc;
+}
+
+
 .text-lg {
   font-size: 1.2em;
 }
