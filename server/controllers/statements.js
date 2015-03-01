@@ -9,13 +9,13 @@ module.exports = function (app, db) {
     var data = [];
     for (var i = 0; i < 100; i++) {
       data.push({
-        img: "/img/Hello.jpg",
+        image: "/img/Hello.jpg",
         text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         timestamp: new Date().toISOString()
       });
     }
     data.push({
-        img: "/img/Hello.jpg",
+        image: "/img/Hello.jpg",
         text: "One statement that shouldn't have made it into storage, but did somehow. It's way too long for Soliloque. Maybe they meant to enter it into Monologue instead?",
         timestamp: new Date().toISOString()
       });
@@ -37,7 +37,8 @@ module.exports = function (app, db) {
   app.post("/api/statements", jsonParser, function (req, res, next) {
     var statements = {
       text: (req.body || {}).text,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
+      image: "/img/Hello.jpg",
     };
     db.statements.insert(statements, function (err, saved) {
       res.json(saved);

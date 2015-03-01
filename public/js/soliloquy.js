@@ -24,6 +24,8 @@
       collection: statements
     });
 
+    soliloquy.profile = profile;
+
     statements.fetch({ reset: true });
 
   });

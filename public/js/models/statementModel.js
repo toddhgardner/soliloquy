@@ -6,6 +6,12 @@
 
     idAttribute: "_id",
 
+    initialize: function () {
+      this.on("sync", function () {
+        console.info("saved statement " + this.id);
+      });
+    },
+
     validate: function (attrs) {
       if (attrs.text.length > 140) {
         return "Statement text cannot be longer than 140 charcters";
@@ -22,16 +28,27 @@
 
     model: soliloquy.StatementModel,
 
-    initialize: function () {
-      this.on("sync", function () {
-        this.each(function (model) {
-          if (!model.isValid()) {
-            var err = new Error(model.validationError);
-            err.model = model.toJSON();
-            throw err;
-          }
-        });
+    // initialize: function () {
+    //   this.on("sync", function () {
+    //     this.each(function (model) {
+    //       if (!model.isValid()) {
+    //         var err = new Error(model.validationError);
+    //         err.model = model.toJSON();
+    //         throw err;
+    //       }
+    //     });
+    //   });
+    // },
+
+    createFromText: function (text) {
+      this.create({
+        text: text,
+        // image: soliloquy.profile.get("image")
       });
+    },
+
+    createRandom: function () {
+      this.createFromText(this.randomText(140));
     },
 
     _monkeyJob: null,

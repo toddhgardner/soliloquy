@@ -5,7 +5,7 @@
 	soliloquy.StatementItemView = Backbone.View.extend({
 
 		events: {
-			"click .js-delete": "onDelete"
+			"submit .js-delete": "onDelete"
 		},
 
 		template: _.template($("#js-tpl-statement").text()),
@@ -25,10 +25,12 @@
 	  	return formatted;
 		},
 
-		onDelete: function () {
+		onDelete: function (e) {
 			console.info("deleting statement " + this.model.id);
 			this.model.destroy();
 			this.remove();
+			// e.preventDefault();
+			// return false;
 		}
 
 	});

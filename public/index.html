@@ -30,6 +30,7 @@
             <label for="status_text">Status</label>
             <textarea id="status_text" name="status" placeholder="To be, or not to be, that is the question."></textarea>
             <button type="submit" class="btn">Post Update</button>
+            <button type="button" class="js-random">I'm feeling random</button>
             <button type="button" class="js-start-monkeys">Start Monkeys</button>
             <button type="button" class="js-stop-monkeys">Stop Monkeys</button>
           </form>
@@ -54,19 +55,19 @@
 <script type="text/template" id="js-tpl-statement">
   <li class="status">
     <div class="status-main">
-      <img src="/img/Hello.jpg" alt="Todd" />
+      <img src="<%= image %>" alt="<%= name %>" />
       <div class="status-text text-lg"><%= text %></div>
     </div>
     <div class="status-meta clearfix text-sm">
-      <div class="pull-left">You</div>
+      <div class="pull-left"><%= name %></div>
       <div class="pull-right"><%= timestamp %></div>
     </div>
-    <button class="js-delete" type="button">d</button>
+    <form><button class="js-delete">d</button></form>
   </li>
 </script>
 
 <!-- BEGIN TRACKJS -->
-<script type="text/javascript">window._trackJs = { token: '98689a7f2f76427db98314fdf423e54f' };</script>
+<script type="text/javascript">window._trackJs = { token: '98689a7f2f76427db98314fdf423e54f', callback:{enabled:false} };</script>
 <script type="text/javascript" src="//d2zah9y47r7bi2.cloudfront.net/releases/current/tracker.js" crossorigin="anonymous"></script>
 <!-- END TRACKJS -->
 

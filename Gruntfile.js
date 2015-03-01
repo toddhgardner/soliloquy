@@ -28,7 +28,7 @@ module.exports = function(grunt) {
             "_": "_",
             "Backbone": "Backbone"
           },
-          mangle: false,
+          mangle: true,
           sourceMap: true,
           preserveComments: false,
         },
@@ -46,7 +46,8 @@ module.exports = function(grunt) {
     watch: {
       express: {
         files:  [
-          "server.js"
+          "server.js",
+          "server/**/*.js"
         ],
         tasks:  [
           "jshint",
