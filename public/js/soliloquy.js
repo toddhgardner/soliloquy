@@ -9,6 +9,7 @@
     var profile = new soliloquy.ProfileModel();
     var statements = new soliloquy.StatementCollection();
 
+    // Setup Views
     new soliloquy.ProfileView({
       el: $(".js-main-profile-view"),
       model: profile
@@ -24,10 +25,33 @@
       collection: statements
     });
 
-    soliloquy.profile = profile;
+    // Setup Ads
+    window.INLINE_ADS({
+      key: "76sdfnnd877asd8gsdf-01",
+      container: ".statement-list",
+      frequency: 700,
+      done: function (count) {
+        console.info("inline ads completed " + count + " ads");
+      }
+    });
 
+    // Get Data
+    soliloquy.profile = profile;
     statements.fetch({ reset: true });
 
   });
 
 })();
+
+
+
+
+
+
+
+
+/*
+  $.getScript("ads/inlineAdProvider.js?slow", function () {
+
+  });
+*/
