@@ -11,7 +11,6 @@ jQuery(function ($) {
   var options = _.extend({}, defaults, window.SIDEBAR_ADS);
 
   var container = $(options.container);
-  var adContainer;
   var i;
 
   for (i=0; i<options.count; i++) {
@@ -22,13 +21,14 @@ jQuery(function ($) {
       placeAd(ad, adContainer);
       setInterval(function () {
         adContainer.html("");
+        var ad = getRandomAd();
         placeAd(ad, adContainer);
         if (_.isFunction(options.onRefresh)) {
           options.onRefresh();
         }
       }, options.refresh);
     })();
-  };
+  }
 
   function placeAd(ad, el) {
     $.ajax({
@@ -42,7 +42,7 @@ jQuery(function ($) {
         });
       }
     });
-  };
+  }
 
 
   var ads = [
