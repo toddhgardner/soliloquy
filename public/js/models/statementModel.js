@@ -32,7 +32,7 @@
     createRandom: function () {
       this.create({
         text: this.randomText(140)
-      }, {wait:false});
+      });
     },
 
     // _monkeyJob: null,
