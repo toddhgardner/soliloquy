@@ -29,7 +29,7 @@ module.exports = function(grunt) {
             "Backbone": "Backbone"
           },
           mangle: true,
-          sourceMap: true,
+          // sourceMap: true,
           preserveComments: false,
         },
         files: {
