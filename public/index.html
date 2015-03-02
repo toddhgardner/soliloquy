@@ -5,6 +5,7 @@
   <title>Soliloquy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 
@@ -13,7 +14,7 @@
   <header class="container-fluid">
     <div class="row">
       <div class="col-sm-12">
-        <a href="#">Soliloquy</a>
+        <h2>Soliloquy</h2>
       </div>
     </div>
   </header>
@@ -25,12 +26,14 @@
       </div>
       <div class="col-md-6 col-sm-9">
 
-        <div class="js-add-statement-view">
+        <div class="js-add-statement-view clearfix">
           <form>
             <label for="status_text">Status</label>
-            <textarea id="status_text" name="status" placeholder="To be, or not to be, that is the question."></textarea>
-            <button type="submit" class="btn">Post Update</button>
-            <button type="button" class="js-random">I'm feeling random</button>
+            <textarea id="status_text" name="status" placeholder="To be, or not to be, that is the question." class="form-control"></textarea>
+            <div class="controls pull-right">
+              <button type="submit" class="btn btn-primary">Post Update</button>
+              <button type="button" class="btn btn-link js-random">I'm feeling random</button>
+            </div>
           </form>
         </div>
 
@@ -46,22 +49,23 @@
   </div>
 
 <script type="text/template" id="js-tpl-profile">
-<%= _id %>
-<%= name %>
-<%= image %>
+
 </script>
 
 <script type="text/template" id="js-tpl-statement">
   <li class="status">
     <div class="status-main">
       <img src="<%= image %>" alt="<%= name %>" />
+      <div class="status-text text-lg"><strong>Todd H Gardner</strong>&nbsp;&nbsp;<span style="color:#aaa">@toddhgardner</span></div>
       <div class="status-text text-lg"><%= text %></div>
     </div>
     <div class="status-meta clearfix text-sm">
-      <div class="pull-left"><%= name %></div>
-      <div class="pull-right"><%= timestamp %></div>
+      <form class="pull-left">
+        <button class="btn btn-link js-delete"><i class="fa fa-trash-o"></i></button>
+      </form>
+      <div class="pull-right" style="padding:10px 12px"><%= timestamp %></div>
     </div>
-    <form><button class="js-delete">d</button></form>
+
   </li>
 </script>
 

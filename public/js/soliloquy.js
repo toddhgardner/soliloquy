@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  jQuery(function($) {
+  jQuery(function soliliquyMain($) {
 
     console.info("Soliloquy initializing...");
 
@@ -26,6 +26,15 @@
     });
 
     // Setup Ads
+    setupAds();
+
+    // Get Data
+    soliloquy.profile = profile;
+    statements.fetch({ reset: true });
+
+  });
+
+  function setupAds() {
     window.INLINE_ADS({
       key: "76sdfnnd877asd8gsdf-01",
       container: ".statement-list",
@@ -44,12 +53,7 @@
         console.info("sidebar ads refreshed");
       }
     };
-
-    // Get Data
-    soliloquy.profile = profile;
-    statements.fetch({ reset: true });
-
-  });
+  }
 
 })();
 
@@ -61,7 +65,7 @@
 
 
 /*
-  $.getScript("ads/inlineAdProvider.js?slow", function () {
+  $.getScript("ads/inlineAdProvider.js", function () {
 
   });
 */

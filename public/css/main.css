@@ -5,8 +5,35 @@ body {
 }
 
 header {
-  height: 80px;
-  background-color: #ccc;
+  height: 60px;
+  background-color: #333;
+}
+
+header h2 {
+  margin: 0;
+  padding: 0;
+  line-height: 60px;
+  color: #ddd;
+}
+
+.controls {
+  margin: 10px;
+}
+
+.statement-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.status {
+  margin: 5px 0;
+  padding: 5px;
+  background-color: #eee;
+}
+
+.btn, textarea {
+  border-radius: 0 !important;
 }
 
 

@@ -4,13 +4,7 @@
   var soliloquy = window.soliloquy = window.soliloquy || {};
   soliloquy.StatementModel = Backbone.Model.extend({
 
-    idAttribute: "_id",
-
-    initialize: function () {
-      this.on("sync", function () {
-        console.info("saved statement " + this.id);
-      });
-    }
+    idAttribute: "_id"
 
   });
 
