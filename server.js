@@ -19,3 +19,6 @@ app.use(express.static(__dirname + "/public"));
 app.listen(port);
 console.log("Express server listening on port " + port);
 
+var altPort = 3001;
+app.listen(altPort);
+console.log("Alt Express server listening on port " + altPort);

@@ -6,9 +6,7 @@
 
     events: {
       "submit": "onStatementSubmit",
-      "click .js-random": "onRandom",
-      "click .js-start-monkeys": "onStartMonkeys",
-      "click .js-stop-monkeys": "onStopMonkeys"
+      "click .js-random": "onRandom"
     },
 
     initialize: function () {
@@ -29,14 +27,6 @@
 
     onRandom: function () {
       this.collection.createRandom();
-    },
-
-    onStartMonkeys: function () {
-      this.collection.startMonkeys();
-    },
-
-    onStopMonkeys: function () {
-      this.collection.stopMonkeys();
     }
 
   });

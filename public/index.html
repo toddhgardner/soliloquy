@@ -20,10 +20,10 @@
 
   <div class="container">
     <div id="status-container" class="row">
-      <div class="col-lg-3 col-md-3">
+      <div class="col-md-3 col-sm-3">
         <div class="js-main-profile-view"></div>
       </div>
-      <div class="col-lg-6 col-md-9">
+      <div class="col-md-6 col-sm-9">
 
         <div class="js-add-statement-view">
           <form>
@@ -31,8 +31,6 @@
             <textarea id="status_text" name="status" placeholder="To be, or not to be, that is the question."></textarea>
             <button type="submit" class="btn">Post Update</button>
             <button type="button" class="js-random">I'm feeling random</button>
-            <button type="button" class="js-start-monkeys">Start Monkeys</button>
-            <button type="button" class="js-stop-monkeys">Stop Monkeys</button>
           </form>
         </div>
 
@@ -41,7 +39,9 @@
         </div>
 
       </div>
-      <div class="col-lg-3">right</div>
+      <div class="col-md-3">
+        <div class="sidebar-ads"></div>
+      </div>
     </div>
   </div>
 
@@ -76,8 +76,8 @@
 <script src="vendor/backbone.js"></script>
 <script src="js/soliloquy.min.js"></script>
 
-<script src="ads/inlineAdProvider.js"></script>
-<!-- <script async src="ads/top/topLoader.js"></script> -->
-<!-- <script async src="ads/right/rightLoader.js"></script> -->
+<script src="http://localhost:3001/ads/inlineAdProvider.js"></script>
+<script src="http://localhost:3001/ads/right/sidebarAdProvider.js"></script>
+<!-- <script src="http://localhost:3001/ads/top/topAdProvider.js"></script> -->
 </body>
 </html>

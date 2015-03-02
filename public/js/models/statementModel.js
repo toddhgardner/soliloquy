@@ -31,23 +31,23 @@
 
     createRandom: function () {
       this.create({
-        text: this.randomText(160)
-      });
+        text: this.randomText(140)
+      }, {wait:false});
     },
 
-    _monkeyJob: null,
-    startMonkeys: function () {
-      this.stopMonkeys();
-      this._monkeyJob = setInterval(function () {
-        this.create({
-          text: this.randomText(160)
-        });
-      }.bind(this), 10);
-    },
+    // _monkeyJob: null,
+    // startMonkeys: function () {
+    //   this.stopMonkeys();
+    //   this._monkeyJob = setInterval(function () {
+    //     this.create({
+    //       text: this.randomText(160)
+    //     });
+    //   }.bind(this), 10);
+    // },
 
-    stopMonkeys: function () {
-      clearInterval(this._monkeyJob);
-    },
+    // stopMonkeys: function () {
+    //   clearInterval(this._monkeyJob);
+    // },
 
     randomText: function (max) {
       var i;

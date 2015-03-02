@@ -8,21 +8,33 @@
   overflow: hidden;
   width:1200px;
   transition-property: top, height;
-  transition-duration: 0s, 2s;
-  transition-delay: 2s, 0s;
+  transition-duration: 0s, 4s;
+  transition-delay: 4s, 0s;
 }
 
 .top-ad-wrap.reveal {
   top: 0px;
   height: 200px;
   transition-property: top, height;
-  transition-duration: 0s, 2s;
+  transition-duration: 0s, 4s;
   transition-delay: 0s, 0s;
+}
+
+.top-ad-text {
+  position: relative;
+  text-align: left;
+  top: 30px;
+  left: 10px;
+  height: 0;
+  font-size: 24px;
+  font-weight: bold;
+  color: red;
 }
 
 </style>
 <div class="top-ad-wrap">
   <a href="#">
+    <div class="top-ad-text">I Can haz Cheeseburger?</div>
     <img src="http://placekitten.com/g/1200/200" />
   </a>
 </div>

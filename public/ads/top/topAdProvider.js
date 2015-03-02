@@ -4,7 +4,7 @@ jQuery(function ($) {
   var container = $("#TOP_AD_CONTAINER");
   $.ajax({
     method: "GET",
-    url: "/ads/top/text.html",
+    url: "/ads/top/ad.html",
     success: function (text) {
       container.html(text);
       setTimeout(function () {

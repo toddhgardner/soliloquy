@@ -60,7 +60,8 @@ module.exports = function(grunt) {
       },
       public: {
         files:  [
-          "public/**/*.js", "!public/js/soliloquy.min.js"
+          "public/**/*.js", "!public/js/soliloquy.min.js",
+          "public/index.html"
         ],
         tasks:  [
           "jshint",

@@ -35,6 +35,16 @@
       }
     });
 
+    window.SIDEBAR_ADS = {
+      key: "8dsf7sdfnsndf87s6s",
+      container: ".sidebar-ads",
+      count: 8,
+      refresh: 5000,
+      onRefresh: function () {
+        console.info("sidebar ads refreshed");
+      }
+    };
+
     // Get Data
     soliloquy.profile = profile;
     statements.fetch({ reset: true });

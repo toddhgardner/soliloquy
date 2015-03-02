@@ -10,6 +10,10 @@ header {
 }
 
 
+.right-ad-wrap {
+  margin: 10px;
+}
+
 .text-lg {
   font-size: 1.2em;
 }

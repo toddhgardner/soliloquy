@@ -58,11 +58,11 @@ window.INLINE_ADS = function (options) {
     },
   ];
   function getAdContent(width) {
-    var width = Math.floor(width / 100) * 100;
+    var nwidth = Math.ceil(width / 100) * 100;
     var ad = ads[Math.floor(Math.random() * ads.length)];
-    var url = ad.imageUrl.replace("%WIDTH%",width);
-    return "<div>"+ad.text+"</div><img src='"+url+"'/>";
-  };
+    var url = ad.imageUrl.replace("%WIDTH%",nwidth);
+    return "<div>"+ad.text+"</div><img src='"+url+"' height='200' width='"+width+"'/>";
+  }
 
 
 };
