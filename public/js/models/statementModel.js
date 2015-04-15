@@ -23,25 +23,16 @@
       });
     },
 
-    createRandom: function () {
-      this.create({
-        text: this.randomText(140)
+    createFromText: function (text) {
+      return this.create({
+        text: text,
+        image: soliloquy.profile.get("image")
       });
     },
 
-    // _monkeyJob: null,
-    // startMonkeys: function () {
-    //   this.stopMonkeys();
-    //   this._monkeyJob = setInterval(function () {
-    //     this.create({
-    //       text: this.randomText(160)
-    //     });
-    //   }.bind(this), 10);
-    // },
-
-    // stopMonkeys: function () {
-    //   clearInterval(this._monkeyJob);
-    // },
+    createRandom: function () {
+      return this.createFromText(this.randomText(140));
+    },
 
     randomText: function (max) {
       var i;

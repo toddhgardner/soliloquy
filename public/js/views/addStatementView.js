@@ -14,11 +14,9 @@
     },
 
     onStatementSubmit: function (e) {
-      this.collection.create({
-        text: this.$textArea.val(),
-        image: soliloquy.profile.get("image")
-      });
-      // this.collection.createFromText(this.$textArea.val());
+      var text = this.$textArea.val();
+      console.info("adding statement '" + text + "'");
+      this.collection.createFromText(text);
       this.$textArea.val("");
 
       e.preventDefault();
@@ -26,6 +24,7 @@
     },
 
     onRandom: function () {
+      console.info("adding random statement");
       this.collection.createRandom();
     }
 

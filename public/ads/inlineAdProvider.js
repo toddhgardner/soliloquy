@@ -23,7 +23,8 @@ window.INLINE_ADS = function (options) {
       }
     });
     $(".INLINE_AD img").css({
-      margin: "10px 0"
+      margin: "10px 0",
+      width: "100%"
     });
     $(".INLINE_AD div").css({
       position: "relative",
@@ -32,8 +33,7 @@ window.INLINE_ADS = function (options) {
       height: "0",
       fontSize: "44px",
       fontWeight: "bold",
-      color: "red"
-
+      color: "#ef4"
     });
 
     return count;

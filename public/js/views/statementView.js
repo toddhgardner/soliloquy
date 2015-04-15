@@ -5,7 +5,7 @@
 	soliloquy.StatementItemView = Backbone.View.extend({
 
 		events: {
-			"submit .js-delete": "onDelete"
+			"click .js-delete": "onDelete"
 		},
 
 		template: _.template($("#js-tpl-statement").text()),
