@@ -27,8 +27,9 @@
 
 		onDelete: function (e) {
 			console.info("deleting statement " + this.model.id);
-			this.model.destroy();
+			setTimeout(function () { this.model.destroy(); });
 			this.remove();
+			e.preventDefault();
 		}
 
 	});

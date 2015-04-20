@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <title>Soliloquy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-  <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <link rel="stylesheet" type="text/css" href="http://cdn.soliloquy.local:3000/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="http://cdn.soliloquy.local:3000/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="http://cdn.soliloquy.local:3000/css/main.css">
 </head>
 
 <body>
@@ -21,10 +21,7 @@
 
   <div class="container">
     <div id="status-container" class="row">
-      <div class="col-md-3 col-sm-3">
-        <div class="js-main-profile-view"></div>
-      </div>
-      <div class="col-md-6 col-sm-9">
+      <div class="col-md-6 col-xs-9">
 
         <div class="js-add-statement-view clearfix">
           <form>
@@ -42,7 +39,7 @@
         </div>
 
       </div>
-      <div class="col-md-3">
+      <div class="col-xs-3">
         <div class="sidebar-ads"></div>
       </div>
     </div>
@@ -70,18 +67,27 @@
 </script>
 
 <!-- BEGIN TRACKJS -->
-<script type="text/javascript">window._trackJs = { token: '98689a7f2f76427db98314fdf423e54f', callback:{enabled:false} };</script>
+<script type="text/javascript">
+window._trackJs = {
+  token: "98689a7f2f76427db98314fdf423e54f",
+  callback:{enabled:false},
+  onError: function (err) {
+    //console.warn("Tracked: " + err.message, err);
+    return true;
+  }
+};
+</script>
 <script type="text/javascript" src="//d2zah9y47r7bi2.cloudfront.net/releases/current/tracker.js" crossorigin="anonymous"></script>
 <!-- END TRACKJS -->
 
-<script src="vendor/jquery.js"></script>
-<script src="vendor/moment.js"></script>
-<script src="vendor/underscore.js"></script>
-<script src="vendor/backbone.js"></script>
-<script src="js/soliloquy.min.js"></script>
+<script src="http://cdn.soliloquy.local:3000/vendor/jquery.js"></script>
+<script src="http://cdn.soliloquy.local:3000/vendor/moment.js"></script>
+<script src="http://cdn.soliloquy.local:3000/vendor/underscore.js"></script>
+<script src="http://cdn.soliloquy.local:3000/vendor/backbone.js"></script>
+<script src="http://cdn.soliloquy.local:3000/js/soliloquy.min.js"></script>
 
-<script src="http://localhost:3001/ads/inlineAdProvider.js"></script>
-<!-- <script src="http://localhost:3001/ads/right/sidebarAdProvider.js"></script> -->
-<!-- <script src="http://localhost:3001/ads/top/topAdProvider.js"></script> -->
+<script src="http://cdn.soliloquy.local:3000/ads/inlineAdProvider.js"></script>
+<script src="http://cdn.soliloquy.local:3000/ads/right/sidebarAdProvider.js"></script>
+<!-- <script src="http://cdn.soliloquy.local:3000/ads/top/topAdProvider.js"></script> -->
 </body>
 </html>

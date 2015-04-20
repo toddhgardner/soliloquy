@@ -10,6 +10,18 @@ jQuery(function ($) {
 
   var options = _.extend({}, defaults, window.SIDEBAR_ADS);
 
+  var ads = [
+    {
+      url: "/ads/right/ad1.html"
+    },
+    {
+      url: "/ads/right/ad2.html"
+    },
+    {
+      url: "/ads/right/ad3.html"
+    }
+  ];
+
   var container = $(options.container);
   var i;
 
@@ -44,18 +56,6 @@ jQuery(function ($) {
     });
   }
 
-
-  var ads = [
-    {
-      url: "/ads/right/ad1.html"
-    },
-    {
-      url: "/ads/right/ad2.html"
-    },
-    {
-      url: "/ads/right/ad3.html"
-    }
-  ];
   function getRandomAd() {
     return ads[Math.floor(Math.random() * ads.length)];
   }
