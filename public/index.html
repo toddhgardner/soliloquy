@@ -70,9 +70,9 @@
 <script type="text/javascript">
 window._trackJs = {
   token: "98689a7f2f76427db98314fdf423e54f",
-  callback:{enabled:false},
+  callback:{enabled:true,bindStack:true},
   onError: function (err) {
-    //console.warn("Tracked: " + err.message, err);
+    console.warn("Tracked Error: " + err.message, err);
     return true;
   }
 };
