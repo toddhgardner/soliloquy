@@ -18,6 +18,10 @@
 
     parse: function (resp) {
       return _.map(resp, function (item) {
+        if (!_.isString(item.text) && item.toString) {
+          console.warn("invalid text data", item.text);
+          item.text = item.text.toString();
+        }
         item.text = item.text.substr(0, 140);
         return item;
       });
