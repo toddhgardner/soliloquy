@@ -35,6 +35,12 @@
   });
 
   function setupAds() {
+    if (!window.INLINE_ADS) {
+      if (window.trackJS) {
+        window.trackJs.track("failed to load INLINE ADS");
+      }
+      return;
+    }
     window.INLINE_ADS({
       key: "76sdfnnd877asd8gsdf-01",
       container: ".statement-list",
