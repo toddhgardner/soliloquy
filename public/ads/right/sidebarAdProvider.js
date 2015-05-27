@@ -44,18 +44,19 @@ jQuery(function ($) {
     });
   }
 
-  var ads = [
-    {
-      url: "/ads/right/ad1.html"
-    },
-    {
-      url: "/ads/right/ad2.html"
-    },
-    {
-      url: "/ads/right/ad3.html"
-    }
-  ];
-  function getRandomAd() {
+
+  function getRandomAds() {
+    var ads = [
+      {
+        url: "/ads/right/ad1.html"
+      },
+      {
+        url: "/ads/right/ad2.html"
+      },
+      {
+        url: "/ads/right/ad3.html"
+      }
+    ];
     return ads[Math.floor(Math.random() * ads.length)];
   }
 
