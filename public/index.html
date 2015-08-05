@@ -67,7 +67,7 @@
 </script>
 
 <!-- BEGIN TRACKJS -->
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 window._trackJs = {
   token: "98689a7f2f76427db98314fdf423e54f",
   userId: "todd@trackjs.com",
@@ -80,8 +80,15 @@ window._trackJs = {
   }
 };
 </script>
-<script type="text/javascript" src="//d2zah9y47r7bi2.cloudfront.net/releases/current/tracker.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="//d2zah9y47r7bi2.cloudfront.net/releases/current/tracker.js" crossorigin="anonymous"></script> -->
 <!-- END TRACKJS -->
+<script>
+// quick-n-dirty showing the error that would have been captured. Simplyfying the demo
+// by not having the awesome trackjs wrapping in place.
+window.onerror = function () {
+  console.error("Recorded:", arguments);
+};
+</script>
 
 <script src="http://cdn.soliloquy.local:3000/vendor/jquery.js"></script>
 <script src="http://cdn.soliloquy.local:3000/vendor/moment.js"></script>
