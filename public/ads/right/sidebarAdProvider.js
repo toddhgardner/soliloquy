@@ -17,20 +17,17 @@ jQuery(function ($) {
     (function sidebarAdLoopClosure () {
       container.append("<div id='SIDEBAR_ADS_"+i+"'></div>");
       var adContainer = container.find("#SIDEBAR_ADS_"+i+"");
-      var ad = getRandomAds();
+      var ad = getRandomAd();
       placeAd(ad, adContainer);
       setInterval(function () {
         adContainer.html("");
-        var ad = getRandomAds();
+        var ad = getRandomAd();
         placeAd(ad, adContainer);
         if (_.isFunction(options.onRefresh)) {
           options.onRefresh();
         }
       }, options.refresh);
     })();
-    setTimeout(function () {
-      throw new Error("Zero Impact Error");
-    });
   }
 
   function placeAd(ad, el) {

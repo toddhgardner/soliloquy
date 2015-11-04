@@ -41,19 +41,19 @@ window.INLINE_ADS = function (options) {
 
   var ads = [
     {
-      imageUrl: "http://placekitten.com/g/%WIDTH%/200",
+      imageUrl: "http://localhost:3000/img/cat200.jpeg",
       text: "Please pet me"
     },
     {
-      imageUrl: "http://place-hoff.com/%WIDTH%/200",
+      imageUrl: "http://localhost:3000/img/hassle200.png",
       text: "Quit Hassle'n me!"
     },
     {
-      imageUrl: "http://placebear.com/g/%WIDTH%/200",
+      imageUrl: "http://localhost:3000/img/bear200.jpeg",
       text: "I AM A BEAR!"
     },
     {
-      imageUrl: "http://baconmockup.com/%WIDTH%/300",
+      imageUrl: "http://localhost:3000/img/bacon200.jpg",
       text: "Eat more bacon"
     },
   ];
