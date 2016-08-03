@@ -33,7 +33,7 @@ window.INLINE_ADS = function (options) {
       height: "0",
       fontSize: "44px",
       fontWeight: "bold",
-      color: "#ef4"
+      color: "magenta"
     });
 
     return count;
@@ -45,8 +45,8 @@ window.INLINE_ADS = function (options) {
       text: "Please pet me"
     },
     {
-      imageUrl: "http://localhost:3000/img/hassle200.png",
-      text: "Quit Hassle'n me!"
+      imageUrl: "http://localhost:3000/img/dundee200.png",
+      text: "G'Day Mate!"
     },
     {
       imageUrl: "http://localhost:3000/img/bear200.jpeg",
